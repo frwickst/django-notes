@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
@@ -12,7 +11,6 @@ class Note(TimeStampedModel):
     """
     A simple model to handle adding arbitrary numbers of notes to a generic object.
     """
-    date = models.DateField(_('Date'), default=datetime.now())
     content = models.TextField(_('Content'))
     public = models.BooleanField(_('Public'), default=True)
     author = models.ForeignKey(User, blank=True, null=True)
