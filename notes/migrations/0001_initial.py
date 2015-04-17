@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 import django.utils.timezone
-import datetime
 import django_extensions.db.fields
 from django.conf import settings
 
@@ -22,7 +21,6 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('created', django_extensions.db.fields.CreationDateTimeField(default=django.utils.timezone.now, verbose_name='created', editable=False, blank=True)),
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
-                ('date', models.DateField(default=datetime.datetime(2015, 3, 30, 13, 39, 53, 299977), verbose_name='Date')),
                 ('content', models.TextField(verbose_name='Content')),
                 ('public', models.BooleanField(default=True, verbose_name='Public')),
                 ('object_id', models.PositiveIntegerField()),
