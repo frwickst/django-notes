@@ -21,7 +21,7 @@ setup(
     name="notes",
     version="0.2.2",
     description=DESCRIPTION,
-    long_description=read("README.rst"),
+    long_description=read("README.md"),
     author="Colin Powell",
     author_email="colin@onecardinal.com",
     license="BSD",
