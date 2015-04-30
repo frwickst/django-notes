@@ -24,6 +24,3 @@ class Note(TimeStampedModel):
         verbose_name = _('Note')
         verbose_name_plural = _('Notes')
 
-    @models.permalink
-    def get_absolute_url(self):
-        return ('notes-view', (), {'pk': self.pk})
