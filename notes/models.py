@@ -7,6 +7,13 @@ from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
 
+class NoteManager(models.Manager):
+    def get_for_object(self, instance):
+        ctype = ContentType.objects.get_for_model(instance)
+        notes = self.filter(content_type=ctype, object_id=instance.pk)
+        return notes
+
+
 class Note(TimeStampedModel):
     """
     A simple model to handle adding arbitrary numbers of notes to a generic object.
@@ -18,7 +25,7 @@ class Note(TimeStampedModel):
     object_id = models.CharField(_('Object ID'), max_length=255)
     content_object = generic.GenericForeignKey()
 
-    objects = models.Manager()
+    objects = NoteManager()
 
     class Meta:
         verbose_name = _('Note')
