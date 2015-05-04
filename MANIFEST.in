@@ -1,3 +1,2 @@
 include README.md
-recursive-include notes/templatetags *.py
-recursive-include notes/templates *.html
+

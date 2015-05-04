@@ -18,7 +18,6 @@ Contents
 
  changelog
  installation
- templatetags
  signals
  usage
  
