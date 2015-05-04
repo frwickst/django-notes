@@ -28,7 +28,7 @@ setup(
     url="http://github.com/powellc/django-notes/",
     packages=['notes'],
     install_requires=[
-        'django>=1.6'
+        'django>=1.7'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
