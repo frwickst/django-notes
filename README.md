@@ -37,4 +37,25 @@ Follow the steps above (including 4) and you should have access to all the notes
 object = YourModel.objects.get(pk=1)
 notes_for_object = object.notes_set.all()
 ```
-Simple.
+
+You can also fetch notes for a object instance using the notes manager like:
+```python
+from notes.models import Note
+model_instance = MyModel.objects.get(pk=3)
+
+notes_for_object = Note.objects.get_for_object(model_instance)
+```
+
+or for multiple instances like:
+```python
+from notes.models import Note
+model_instance = MyModel.objects.get(pk=3)
+another_instance = SomeOtherModel.objects.get(pk=12)
+
+notes_for_both_objects = Note.objects.get_for_objects([model_instance, another_instance])
+```
+
+When fetching notes for multiple objects you can pass a `ordering` parameter and a `reverse_ordering`
+parameter to set how the notes should be ordered. The `ordering` parameter should be the name of the 
+a model attribute present in all models that is passed to the function.
+
