@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(default=django.utils.timezone.now, verbose_name='modified', editable=False, blank=True)),
                 ('content', models.TextField(verbose_name='Content')),
                 ('public', models.BooleanField(default=True, verbose_name='Public')),
-                ('object_id', models.PositiveIntegerField()),
+                ('object_id', models.CharField(max_length=255, verbose_name='Object ID')),
                 ('author', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
                 ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
             ],
