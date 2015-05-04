@@ -1,5 +1,3 @@
-.. _changelog:
-
 ChangeLog
 =========
 
