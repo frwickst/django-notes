@@ -6,11 +6,34 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
+import operator
+
 
 class NoteManager(models.Manager):
     def get_for_object(self, instance):
         ctype = ContentType.objects.get_for_model(instance)
         notes = self.filter(content_type=ctype, object_id=instance.pk)
+        return notes
+
+    def get_for_objects(self, instances, ordering=None, reverse_ordering=True):
+        """
+        Creates a list of all notes given a list of model instances.
+
+        Note that duplicates can be present in the results if you pass the same
+        instance multiple times.
+        """
+        notes = []
+
+        # Create a list of all queries
+        for instance in instances:
+            ctype = ContentType.objects.get_for_model(instance)
+            notes_queryset = self.filter(content_type=ctype, object_id=instance.pk)
+            notes += notes_queryset
+
+        if ordering:
+            # Sort notes in place
+            notes.sort(key=operator.attrgetter(ordering), reverse=reverse_ordering)
+
         return notes
 
 
