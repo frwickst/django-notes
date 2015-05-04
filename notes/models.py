@@ -16,7 +16,7 @@ class Note(TimeStampedModel):
     author = models.ForeignKey(User, blank=True, null=True)
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey("content_type", "object_id")
+    content_object = generic.GenericForeignKey()
 
     objects = models.Manager()
 
