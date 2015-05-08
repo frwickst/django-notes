@@ -15,7 +15,12 @@ Notes uses generic relations to handle attaching themselves to models. So instal
 	from notes.models import Note
 	```
 
-3. Add the note inline to your model's admin def in your admin.py file:
+3. Sync the database to add Note model:
+	```bash
+	python manage.py syncdb
+	```
+
+4. Add the note inline to your model's admin def in your admin.py file:
 	```python
 	from notes.admin import NoteInline
 	
@@ -23,7 +28,7 @@ Notes uses generic relations to handle attaching themselves to models. So instal
 		inlines = [NoteInline,]
 	```
 
-4. To enable easy management you can add a hook to your model:
+5. To enable easy management you can add a hook to your model:
 	```python
 	from notes.models import Note
 	from django.contrib.contenttypes.fields import GenericRelation
@@ -32,7 +37,7 @@ Notes uses generic relations to handle attaching themselves to models. So instal
 
 Usage
 ------
-Follow the steps above (including 4) and you should have access to all the notes at instance_of_yourmodel.notes_set.all():
+Follow the steps above (including #5) and you should have access to all the notes at instance_of_yourmodel.notes_set.all():
 ```
 object = YourModel.objects.get(pk=1)
 notes_for_object = object.notes_set.all()
