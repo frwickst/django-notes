@@ -2,12 +2,12 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django_extensions.db.models import TimeStampedModel
 
 import operator
 
+from helpers import user_model_label
 
 class NoteManager(models.Manager):
     def get_for_object(self, instance):
@@ -43,7 +43,7 @@ class Note(TimeStampedModel):
     """
     content = models.TextField(_('Content'))
     public = models.BooleanField(_('Public'), default=True)
-    author = models.ForeignKey(User, blank=True, null=True)
+    author = models.ForeignKey(user_model_label, blank=True, null=True)
     content_type = models.ForeignKey(ContentType)
     object_id = models.CharField(_('Object ID'), max_length=255)
     content_object = generic.GenericForeignKey()

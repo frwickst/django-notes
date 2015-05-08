@@ -8,6 +8,7 @@ ChangeLog
   - Adds Note.objects.get_for_object() and get_for_objects() support
 - Support models with a non-'id' field by using 'pk' instead
 - Better Django 1.7, 1.8 support
+- Support for custom User models
 
 Breaking changes:
 - Dropped support for Django 1.6
