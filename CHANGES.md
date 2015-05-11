@@ -9,6 +9,7 @@ ChangeLog
 - Support models with a non-'id' field by using 'pk' instead
 - Better Django 1.7, 1.8 support
 - Support for custom User models
+- A nice admin list view
 
 Breaking changes:
 - Dropped support for Django 1.6
