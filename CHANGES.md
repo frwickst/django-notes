@@ -10,10 +10,14 @@ ChangeLog
 - Better Django 1.7, 1.8 support
 - Support for custom User models
 - A nice admin list view
+- Remove dependency on django-extensions
 
 Breaking changes:
 - Dropped support for Django 1.6
 - Remove half-completed template tag code
+- The 'created' and 'modified' fields now use normal Django fields
+  instead of the ones supplied by TimeStampedModel in Django
+  extensions.
 
 0.3 (bellhops)
 ---

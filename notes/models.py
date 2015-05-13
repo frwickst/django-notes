@@ -4,7 +4,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
-from django_extensions.db.models import TimeStampedModel
 
 import operator
 
@@ -38,7 +37,7 @@ class NoteManager(models.Manager):
         return notes
 
 @python_2_unicode_compatible
-class Note(TimeStampedModel):
+class Note(models.Model):
     """
     A simple model to handle adding arbitrary numbers of notes to a generic object.
     """
@@ -49,11 +48,16 @@ class Note(TimeStampedModel):
     object_id = models.CharField(_('Object ID'), max_length=255)
     content_object = generic.GenericForeignKey()
 
+    created = models.DateTimeField(_('Created'), auto_now_add=True)
+    modified = models.DateTimeField(_('Modified'), auto_now_add=True, auto_now=True, editable=False)
+
     objects = NoteManager()
 
     class Meta:
         verbose_name = _('Note')
         verbose_name_plural = _('Notes')
+        get_latest_by = 'modified'
+        ordering = ('-modified', '-created',)
 
     def __str__(self):
         return "[%s] Type: %s | Obj id: %s" % (self.id, self.content_type, self.object_id)
