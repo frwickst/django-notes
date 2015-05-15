@@ -4,6 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 import operator
 
@@ -48,8 +49,8 @@ class Note(models.Model):
     object_id = models.CharField(_('Object ID'), max_length=255)
     content_object = generic.GenericForeignKey()
 
-    created = models.DateTimeField(_('Created'), auto_now_add=True)
-    modified = models.DateTimeField(_('Modified'), auto_now_add=True, auto_now=True, editable=False)
+    created = models.DateTimeField(_('Created'), editable=False)
+    modified = models.DateTimeField(_('Modified'), editable=False)
 
     objects = NoteManager()
 
@@ -61,3 +62,12 @@ class Note(models.Model):
 
     def __str__(self):
         return "[%s] Type: %s | Obj id: %s" % (self.id, self.content_type, self.object_id)
+
+    def save(self, *args, **kwargs):
+        now = timezone.now()
+        self.modified = now
+        if not self.id:
+            self.created = now
+
+        super(Note, self).save(*args, **kwargs)
+
