@@ -1,6 +1,10 @@
 ChangeLog
 =========
 
+0.4.1 (frwickst)
+---
+- Better Django 1.8 support by removing deprecation warnings
+
 0.4 (frwickst)
 ---
 - Code cleanup
