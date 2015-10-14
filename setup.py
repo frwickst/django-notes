@@ -26,7 +26,7 @@ setup(
     author_email="colin@onecardinal.com",
     license="BSD",
     url="http://github.com/powellc/django-notes/",
-    packages=['notes'],
+    packages=['notes', 'notes.migrations'],
     install_requires=[
         'django>=1.7'
     ],

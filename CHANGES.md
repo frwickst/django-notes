@@ -1,6 +1,10 @@
 ChangeLog
 =========
 
+0.4.2 (frwickst)
+---
+- Include forgotten migration directory when installing
+
 0.4.1 (frwickst)
 ---
 - Better Django 1.8 support by removing deprecation warnings
