@@ -19,13 +19,13 @@ def read(fname):
 
 setup(
     name="notes",
-    version="0.2.2",
+    version="0.4.2",
     description=DESCRIPTION,
     long_description=read("README.md"),
     author="Colin Powell",
     author_email="colin@onecardinal.com",
     license="BSD",
-    url="http://github.com/powellc/django-notes/",
+    url="http://github.com/frwickst/django-notes/",
     packages=['notes', 'notes.migrations'],
     install_requires=[
         'django>=1.7'
